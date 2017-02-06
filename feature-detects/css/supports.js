@@ -10,14 +10,15 @@
     "href": "http://dev.w3.org/csswg/css3-conditional/#at-supports"
   },{
     "name": "Related Github Issue",
-    "href": "github.com/Modernizr/Modernizr/issues/648"
+    "href": "https://github.com/Modernizr/Modernizr/issues/648"
   },{
     "name": "W3 Info",
     "href": "http://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
   }]
 }
 !*/
-define(['Modernizr'], function( Modernizr ) {
-  // Relies on the fact that a browser vendor should expose the CSSSupportsRule interface
-  Modernizr.addTest('supports', 'CSS' in window && 'supports' in window.CSS);
+define(['Modernizr'], function(Modernizr) {
+  var newSyntax = 'CSS' in window && 'supports' in window.CSS;
+  var oldSyntax = 'supportsCSS' in window;
+  Modernizr.addTest('supports', newSyntax || oldSyntax);
 });
